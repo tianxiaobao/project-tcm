@@ -6405,14 +6405,14 @@ function _showPlanDialog(id, okFn, data){
 				}
 				return acc;
 			});
-			storeCaller(data? "editPlan": "addPlan", params, function(showData){
-				okFn(data? IX.inherit(params, {storages: showStorages}): showData);
+			storeCaller(data.id ? "editPlan": "addPlan", params, function(showData){
+				okFn(data.id ? IX.inherit(params, {storages: showStorages}): showData);
 				hideDialog();
 			});
 		}
 		showDialog({
 			clz : "store-edit",
-			title : isHandle ? (data ? "编辑录像计划" : "新增录像计划") : "查看录像计划",
+			title : isHandle ? (data.id ? "编辑录像计划" : "新增录像计划") : "查看录像计划",
 			content : t_edit.renderData("", planData.getTplData()),
 			listen : {ok : _okFn}
 		});
